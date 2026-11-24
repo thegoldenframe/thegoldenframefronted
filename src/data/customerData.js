@@ -1,0 +1,125 @@
+// ── Food & Beverage Menu (Bar category REMOVED) ───────────────────────────────
+export const menuCategories = [
+  { id: 'snacks',    label: 'Snacks',       icon: '🍟' },
+  { id: 'food',      label: 'Food',         icon: '🍽️' },
+  { id: 'beverages', label: 'Beverages',    icon: '🧃' },
+  { id: 'desserts',  label: 'Desserts',     icon: '🍨' },
+]
+
+export const menuItems = [
+  // Snacks
+  { id: 1,  category: 'snacks',    name: 'Crispy Nachos',        price: 149, desc: 'House-made nachos with salsa, sour cream & jalapeños',         veg: true,  popular: true },
+  { id: 2,  category: 'snacks',    name: 'Loaded Fries',         price: 179, desc: 'Thick-cut fries with cheese sauce & secret seasoning',          veg: true,  popular: true },
+  { id: 3,  category: 'snacks',    name: 'Chicken Wings (6 pc)', price: 259, desc: 'Smoky BBQ or buffalo-glazed chicken wings',                     veg: false, popular: true },
+  { id: 4,  category: 'snacks',    name: 'Paneer Tikka',         price: 229, desc: 'Tandoor-spiced cottage cheese skewers with mint chutney',       veg: true,  popular: false },
+  { id: 5,  category: 'snacks',    name: 'Cheese Garlic Bread',  price: 129, desc: 'Toasted ciabatta with herb butter & melted mozzarella',         veg: true,  popular: false },
+  { id: 6,  category: 'snacks',    name: 'Veg Spring Rolls',     price: 149, desc: 'Crispy golden rolls with sweet chilli dipping sauce',           veg: true,  popular: false },
+  { id: 7,  category: 'snacks',    name: 'Chicken Popcorn',      price: 199, desc: 'Bite-sized crispy chicken with sriracha mayo',                  veg: false, popular: true },
+  // Food
+  { id: 8,  category: 'food',      name: 'Classic Club Burger',  price: 299, desc: 'Double beef patty, aged cheddar, house pickles & secret sauce', veg: false, popular: true },
+  { id: 9,  category: 'food',      name: 'Paneer Wrap',          price: 249, desc: 'Grilled paneer, fresh veggies & chipotle sauce in a tortilla',  veg: true,  popular: false },
+  { id: 10, category: 'food',      name: 'Chicken Caesar Wrap',  price: 279, desc: 'Grilled chicken, romaine, parmesan & house Caesar dressing',    veg: false, popular: true },
+  { id: 11, category: 'food',      name: 'Margherita Pizza',     price: 329, desc: 'San Marzano tomato, buffalo mozzarella & fresh basil',          veg: true,  popular: true },
+  { id: 12, category: 'food',      name: 'Peri-Peri Pasta',      price: 299, desc: 'Penne in spicy peri-peri sauce with grilled vegetables',        veg: true,  popular: false },
+  { id: 13, category: 'food',      name: 'Grilled Chicken Bowl', price: 349, desc: 'Herb-marinated chicken, roasted veggies & quinoa',              veg: false, popular: false },
+  // Beverages (Non-alcoholic only)
+  { id: 14, category: 'beverages', name: 'Cold Coffee',          price: 99,  desc: 'Rich espresso blended with ice cream & cold milk',             veg: true,  popular: true },
+  { id: 15, category: 'beverages', name: 'Fresh Lime Soda',      price: 69,  desc: 'Freshly squeezed lemon, soda & a pinch of black salt',          veg: true,  popular: true },
+  { id: 16, category: 'beverages', name: 'Mango Smoothie',       price: 129, desc: 'Alphonso mango blended with yoghurt & honey',                   veg: true,  popular: true },
+  { id: 17, category: 'beverages', name: 'Mint Lemonade',        price: 79,  desc: 'Fresh mint, lemon & sugar — the perfect game-day refreshment', veg: true,  popular: false },
+  { id: 18, category: 'beverages', name: 'Virgin Mojito',        price: 99,  desc: 'Muddled lime, fresh mint, ginger ale & soda water',             veg: true,  popular: true },
+  { id: 19, category: 'beverages', name: 'Masala Chai',          price: 49,  desc: 'House-blend spiced milk tea in the classic Silvassa tradition',    veg: true,  popular: false },
+  { id: 20, category: 'beverages', name: 'Red Bull',             price: 149, desc: 'Energy drink — ice-cold and ready',                             veg: true,  popular: false },
+  // Desserts
+  { id: 21, category: 'desserts',  name: 'Brownie Blast',        price: 149, desc: 'Warm dark chocolate brownie with vanilla ice cream & fudge',   veg: true,  popular: true },
+  { id: 22, category: 'desserts',  name: 'Gulab Jamun (2 pc)',   price: 89,  desc: 'Classic rose-water syrup dumplings, served warm',               veg: true,  popular: false },
+  { id: 23, category: 'desserts',  name: 'Chocolate Mousse',     price: 129, desc: 'Belgian dark chocolate mousse with whipped cream',              veg: true,  popular: true },
+]
+
+// ── Offers & Promotions ───────────────────────────────────────────────────────
+export const offersData = [
+  {
+    id: 1,
+    tag: 'Happy Hours',
+    title: 'Off-Peak Delight',
+    subtitle: 'Save 30% on all tables',
+    desc: 'Play between 10 AM – 12 PM on weekdays and enjoy 30% off your hourly table rate. Perfect for morning sessions.',
+    validTill: '31 Dec 2026',
+    code: 'MORNING30',
+    color: 'from-gold/20 to-gold/5',
+    icon: '⏰',
+    type: 'table',
+  },
+  {
+    id: 2,
+    tag: 'Weekend Special',
+    title: 'Group Package',
+    subtitle: 'Bring 4 friends, one plays free',
+    desc: 'Book a table for 5 people on weekends and the 5th person plays absolutely free. The more the merrier!',
+    validTill: '30 Sep 2026',
+    code: 'GROUP5',
+    color: 'from-amber-500/20 to-amber-500/5',
+    icon: '🎱',
+    type: 'group',
+  },
+  {
+    id: 3,
+    tag: 'Birthday Offer',
+    title: 'Birthday Bash',
+    subtitle: '1 hour complimentary for birthday players',
+    desc: 'Celebrate your birthday at The Golden Frame and receive 1 hour of complimentary table time on us. ID proof required.',
+    validTill: 'Ongoing',
+    code: 'BDAYGF',
+    color: 'from-purple-500/20 to-purple-500/5',
+    icon: '🎂',
+    type: 'birthday',
+  },
+  {
+    id: 4,
+    tag: 'Student Deal',
+    title: 'Student Discount',
+    subtitle: '20% off with valid student ID',
+    desc: 'Show your valid student ID and enjoy 20% off on table bookings from Monday to Friday. Valid for all table types.',
+    validTill: '31 Mar 2027',
+    code: 'STUDENT20',
+    color: 'from-blue-500/20 to-blue-500/5',
+    icon: '🎓',
+    type: 'student',
+  },
+  {
+    id: 5,
+    tag: 'Corporate',
+    title: 'Corporate Event Package',
+    subtitle: 'Team outing packages from ₹5,000',
+    desc: 'Book our VIP rooms for corporate events, team outings, and celebrations. Custom catering and dedicated host included.',
+    validTill: 'Ongoing',
+    code: 'CORP2026',
+    color: 'from-emerald-500/20 to-emerald-500/5',
+    icon: '💼',
+    type: 'corporate',
+  },
+  {
+    id: 6,
+    tag: 'New Member',
+    title: 'First-Time Bonus',
+    subtitle: '1 free hour on your first visit',
+    desc: 'New to The Golden Frame? Register and enjoy 1 complimentary hour on any standard table during your first visit.',
+    validTill: 'Ongoing',
+    code: 'WELCOME1HR',
+    color: 'from-rose-500/20 to-rose-500/5',
+    icon: '🌟',
+    type: 'new',
+  },
+]
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+export const faqData = [
+  { q: 'What are your opening hours?', a: 'We are open every day from 10:00 AM to 11:00 PM, including weekends and public holidays.' },
+  { q: 'Can I book a table online?', a: 'Yes! Use our online booking system to reserve your preferred table, date, and time slot. You will receive an instant confirmation.' },
+  { q: 'What is the minimum booking duration?', a: 'The minimum booking duration is 1 hour for all table types. You can extend your session at the venue if the table is available.' },
+  { q: 'Do you offer membership plans?', a: 'Yes, we offer Silver, Gold, and Platinum membership plans with benefits like discounted hourly rates, priority booking, and complimentary hours.' },
+  { q: 'Is there a dress code?', a: 'We maintain a smart-casual dress code. Sports shoes are permitted. We request guests to avoid sleeveless tops and torn clothing in the VIP sections.' },
+  { q: 'Can I cancel or reschedule my booking?', a: 'Cancellations made at least 2 hours before the booking time are fully refunded. Reschedules are accepted up to 1 hour before your session.' },
+  { q: 'Do you serve food and beverages?', a: 'Yes! We have a full food & beverage menu with snacks, meals, and soft drinks available. Orders can be placed from your table.' },
+  { q: 'Is coaching available for beginners?', a: 'Absolutely. Our resident coaches offer 1-on-1 and group sessions for beginners through to competitive players. Sessions can be booked at the venue.' },
+]

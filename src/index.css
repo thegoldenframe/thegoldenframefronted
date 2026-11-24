@@ -1,0 +1,487 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────────
+   The Golden Frame – Premium Snooker & Pool Lounge
+   Centralized Theme System
+   ─────────────────────────────────────────────────────────────
+   Color tokens are RGB triplets so Tailwind opacity modifiers
+   (bg-black/90, text-gray/65 etc.) work with theme switching.
+────────────────────────────────────────────────────────────── */
+
+/* ══════ DARK THEME (default) ══════ */
+:root {
+  /* EMERALD & COPPER — deep snooker-felt greens, warm cream text, copper accent */
+  --c-black:       6, 17, 13;        /* #06110D  — page bg (emerald black) */
+  --c-surface:     12, 28, 22;       /* #0C1C16  — card / section bg */
+  --c-ivory:       241, 237, 226;    /* #F1EDE2  — primary text */
+  --c-gray:        178, 194, 184;    /* #B2C2B8  — secondary text (sage) */
+  --c-gray-dark:   124, 146, 134;    /* #7C9286 */
+  --c-gray-mid:    28, 52, 42;       /* #1C342A */
+  --c-gold:        214, 132, 84;     /* #D68454  — copper accent (class names still "gold") */
+  --c-gold-soft:   242, 176, 128;    /* #F2B080 */
+  --c-gold-dark:   168, 96, 52;      /* #A86034 */
+  --c-gold-muted:  122, 68, 36;      /* #7A4424 */
+  --c-gold-text:   232, 152, 104;    /* #E89868  — copper used for TEXT */
+
+  --color-bg:        #06110D;
+  --color-surface:   #0C1C16;
+  --nav-bg-scroll:   rgba(6,17,13,0.90);
+  --nav-blur:        blur(20px);
+  --glass-bg:        rgba(12,28,22,0.74);
+  --glass-border:    rgba(214,132,84,0.18);
+  --input-bg:        rgba(6,17,13,0.60);
+  --input-text:      #F1EDE2;
+  --input-placeholder: rgba(178,194,184,0.38);
+  --autofill-bg:     #08150F;
+  --autofill-text:   #F1EDE2;
+  --scrollbar-track: #06110D;
+  --scrollbar-thumb: #D68454;
+  --selection-bg:    rgba(214,132,84,0.28);
+  --selection-text:  #F1EDE2;
+}
+
+/* ══════ LIGHT THEME — Sage Cream & Deep Copper ══════ */
+[data-theme="light"] {
+  --c-black:       238, 243, 234;    /* #EEF3EA  — sage-white page bg */
+  --c-surface:     250, 252, 247;    /* #FAFCF7  — card / section bg */
+  --c-ivory:       12, 31, 23;       /* #0C1F17  — primary text (deep green-black) */
+  --c-gray:        52, 74, 63;       /* #344A3F  — secondary text */
+  --c-gray-dark:   86, 108, 97;      /* #566C61 */
+  --c-gray-mid:    215, 226, 213;    /* #D7E2D5 */
+  --c-gold:        200, 112, 58;     /* #C8703A  — copper fills / borders */
+  --c-gold-soft:   226, 150, 100;    /* #E29664 */
+  --c-gold-dark:   150, 78, 36;      /* #964E24 */
+  --c-gold-muted:  120, 62, 28;
+  --c-gold-text:   140, 66, 24;      /* #8C4218  — copper text, >=6:1 on sage-white */
+
+  --color-bg:        #EEF3EA;
+  --color-surface:   #FAFCF7;
+  --nav-bg-scroll:   rgba(250,252,247,0.92);
+  --nav-blur:        blur(16px);
+  --glass-bg:        rgba(250,252,247,0.84);
+  --glass-border:    rgba(150,78,36,0.22);
+  --input-bg:        rgba(250,252,247,0.95);
+  --input-text:      #0C1F17;
+  --input-placeholder: rgba(52,74,63,0.55);
+  --autofill-bg:     #FAFCF7;
+  --autofill-text:   #0C1F17;
+  --scrollbar-track: #E1EADD;
+  --scrollbar-thumb: #C8703A;
+  --selection-bg:    rgba(200,112,58,0.28);
+  --selection-text:  #0C1F17;
+}
+
+/* ──────── Base resets ──────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-bg);
+  color: rgb(var(--c-ivory));
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.65;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb  { background: var(--scrollbar-thumb); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #F2B080; }
+
+/* Selection */
+::selection { background: var(--selection-bg); color: var(--selection-text); }
+
+/* Focus */
+*:focus-visible { outline: 2px solid rgba(214,132,84,0.5); outline-offset: 2px; }
+
+/* Autofill reset */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--autofill-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ──────── Component layer ──────── */
+@layer components {
+
+  .btn-gold {
+    @apply relative inline-flex items-center justify-center gap-2 px-8 py-3 font-body font-medium text-sm tracking-widest uppercase overflow-hidden cursor-pointer;
+    background: linear-gradient(135deg, #D68454, #F2B080, #D68454);
+    background-size: 200% auto;
+    color: #06110D;
+    transition: background-position 0.4s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  .btn-gold:hover {
+    background-position: right center;
+    box-shadow: 0 0 32px rgba(214,132,84,0.5);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline-gold {
+    @apply relative inline-flex items-center justify-center gap-2 px-8 py-3 font-body font-medium text-sm tracking-widest uppercase border border-gold text-gold overflow-hidden cursor-pointer;
+    transition: all 0.35s ease;
+  }
+  .btn-outline-gold::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #D68454, #F2B080);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: -1;
+  }
+  .btn-outline-gold:hover { color: #06110D; box-shadow: 0 0 28px rgba(214,132,84,0.35); }
+  .btn-outline-gold:hover::before { transform: scaleX(1); }
+
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .gold-border   { border: 1px solid rgba(214,132,84,0.22); }
+  .gold-glow     { box-shadow: 0 0 22px rgba(214,132,84,0.3); }
+
+  .gold-text {
+    background: linear-gradient(135deg, #D68454, #F2B080, #D68454);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-padding   { @apply py-14 sm:py-20 md:py-28 lg:py-36; }
+  .container-luxury  { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+
+  .heading-luxury {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle-luxury {
+    @apply text-xs font-medium tracking-[0.35em] uppercase text-gold font-body;
+  }
+
+  .divider-gold {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, #D68454, transparent);
+  }
+}
+
+/* ══════════════════════════════════════════════
+   LIGHT THEME — Component-Level Overrides
+   (for things CSS variables alone can't fix)
+══════════════════════════════════════════════ */
+
+/* ── Navbar ── */
+[data-theme="light"] nav.fixed {
+  background: var(--nav-bg-scroll) !important;
+  backdrop-filter: var(--nav-blur) !important;
+  border-bottom-color: rgba(214,132,84,0.12) !important;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06) !important;
+}
+
+/* ── Light mode shadows for cards ── */
+[data-theme="light"] .glass-card {
+  box-shadow: 0 4px 24px rgba(10,40,28,0.08);
+}
+[data-theme="light"] .gold-border {
+  border-color: rgba(214,132,84,0.25);
+}
+
+/* ── Light mode button refinements ── */
+[data-theme="light"] .btn-gold {
+  box-shadow: 0 4px 16px rgba(150,78,36,0.28);
+}
+[data-theme="light"] .btn-outline-gold {
+  border-color: #C8703A;
+  color: #733514;
+}
+[data-theme="light"] .btn-outline-gold:hover { color: #14110C; }
+
+/* ── Inputs & selects in light mode ── */
+[data-theme="light"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  background-color: var(--input-bg) !important;
+  color: var(--input-text) !important;
+  border-color: rgba(214,132,84,0.25) !important;
+}
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: var(--input-placeholder) !important;
+}
+[data-theme="light"] select option {
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+}
+
+/* ── Footer stays dark in light mode ── */
+[data-theme="light"] footer {
+  --c-black:      5, 14, 11;
+  --c-surface:    10, 24, 19;
+  --c-ivory:      241, 237, 226;
+  --c-gray:       178, 194, 184;
+  --c-gray-dark:  124, 146, 134;
+  --c-gray-mid:   28, 52, 42;
+  --c-gold:       214, 132, 84;
+  --c-gold-soft:  242, 176, 128;
+  --c-gold-dark:  168, 96, 52;
+  --c-gold-text:  232, 152, 104;
+  background-color: #050E0B !important;
+  color: #F1EDE2;
+}
+[data-theme="light"] footer .glass-card {
+  background: rgba(10,24,19,0.72);
+}
+[data-theme="light"] footer input {
+  background-color: rgba(11,11,11,0.50) !important;
+  color: #F5F5F5 !important;
+  border-color: rgba(214,132,84,0.15) !important;
+}
+[data-theme="light"] footer input::placeholder {
+  color: rgba(176,176,176,0.30) !important;
+}
+
+/* ── CTA & Booking sections with background images stay dark ── */
+[data-theme="light"] section:has(> .absolute.bg-cover),
+[data-theme="light"] section:has(> .absolute.bg-gradient-to-br) {
+  --c-ivory: 241, 237, 226;
+  --c-gray:  178, 194, 184;
+  --c-black: 6, 17, 13;
+  --c-surface: 12, 28, 22;
+  --c-gold: 214, 132, 84;
+  --c-gold-soft: 242, 176, 128;
+  --c-gold-dark: 168, 96, 52;
+  --c-gold-text: 232, 152, 104;
+}
+
+/* ── Light mode scrollbar for mobile menu ── */
+[data-theme="light"] .bg-surface {
+  background-color: rgb(var(--c-surface));
+}
+
+/* ──────── Gold shimmer ──────── */
+@keyframes goldShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.gold-shimmer {
+  background: linear-gradient(90deg, #D68454, #F2B080, #D68454, #F2B080);
+  background-size: 200% auto;
+  animation: goldShimmer 3.5s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ──────── Glow pulse ──────── */
+@keyframes glowPulseAnim {
+  0%,100% { box-shadow: 0 0 20px rgba(214,132,84,0.25); }
+  50%      { box-shadow: 0 0 50px rgba(214,132,84,0.55); }
+}
+.glow-pulse { animation: glowPulseAnim 3s ease-in-out infinite; }
+
+/* ──────── Float ──────── */
+@keyframes floatY {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-16px); }
+}
+.float-animation { animation: floatY 6s ease-in-out infinite; }
+
+/* ──────── Fade-in page ──────── */
+@keyframes fadeInPage {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-transition { animation: fadeInPage 0.6s ease-out forwards; }
+
+/* ──────── Swiper overrides ──────── */
+.swiper-pagination-bullet         { background: rgba(214,132,84,0.35) !important; width:8px !important; height:8px !important; }
+.swiper-pagination-bullet-active  { background: #D68454 !important; width:26px !important; border-radius:4px !important; }
+
+/* ──────── Masonry ──────── */
+.masonry-grid     { column-count: 3; column-gap: 0.75rem; }
+.masonry-item     { break-inside: avoid; margin-bottom: 0.75rem; }
+@media(max-width:768px)  { .masonry-grid { column-count: 2; } }
+@media(max-width:480px)  { .masonry-grid { column-count: 1; } }
+
+/* ──────── Mobile touch improvements ──────── */
+@media(max-width: 640px) {
+  /* Ensure tap targets are at least 44px */
+  .btn-gold, .btn-outline-gold {
+    min-height: 44px;
+  }
+  /* Prevent horizontal overflow from any element */
+  section, footer, nav, main {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  /* Better text readability on mobile */
+  .heading-luxury {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ──────── Stagger helpers ──────── */
+.delay-100 { animation-delay:0.1s; } .delay-200 { animation-delay:0.2s; }
+.delay-300 { animation-delay:0.3s; } .delay-400 { animation-delay:0.4s; }
+.delay-500 { animation-delay:0.5s; } .delay-600 { animation-delay:0.6s; }
+
+/* ──────── Snooker 3D Hero ──────── */
+.snooker-hero-canvas-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.snooker-hero-canvas-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.snooker-hero-bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, rgb(var(--c-black)) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.snooker-hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, transparent 55%, rgb(var(--c-black) / 0.45) 100%);
+}
+
+/* Loading state */
+.snooker-hero-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(var(--c-black));
+  z-index: 5;
+}
+
+.snooker-hero-loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 2px solid rgba(214,132,84,0.15);
+  border-top-color: #D68454;
+  border-radius: 50%;
+  animation: snookerSpin 0.9s linear infinite;
+}
+
+.snooker-hero-loading-text {
+  margin-top: 16px;
+  color: rgb(var(--c-gold-text));
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+@keyframes snookerSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* WebGL fallback */
+.snooker-hero-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgb(var(--c-black)) 0%, rgb(var(--c-surface)) 50%, rgb(var(--c-black)) 100%);
+}
+
+.snooker-hero-fallback-inner {
+  text-align: center;
+}
+
+.snooker-hero-fallback-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+  filter: grayscale(0.3);
+}
+
+.snooker-hero-fallback-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 8vw, 5rem);
+  font-weight: 700;
+  color: rgb(var(--c-ivory));
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+}
+
+.snooker-hero-fallback-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgb(var(--c-gold-text));
+  margin-top: 12px;
+}
+
+
+/* ══════════════════════════════════════════════
+   LIGHT MODE — readability layer
+   Secondary text, translucent tints and dark-on-gold text are re-mapped
+   so everything keeps proper contrast on ivory backgrounds.
+   (:where() keeps specificity at 0 so hover/focus utilities still win.)
+══════════════════════════════════════════════ */
+:where([data-theme="light"]) .text-gray\/20 { color: rgb(var(--c-gray) / 0.84); }
+:where([data-theme="light"]) .text-gray\/25 { color: rgb(var(--c-gray) / 0.85); }
+:where([data-theme="light"]) .text-gray\/30 { color: rgb(var(--c-gray) / 0.86); }
+:where([data-theme="light"]) .text-gray\/35 { color: rgb(var(--c-gray) / 0.87); }
+:where([data-theme="light"]) .text-gray\/40 { color: rgb(var(--c-gray) / 0.88); }
+:where([data-theme="light"]) .text-gray\/45 { color: rgb(var(--c-gray) / 0.89); }
+:where([data-theme="light"]) .text-gray\/50 { color: rgb(var(--c-gray) / 0.9); }
+:where([data-theme="light"]) .text-gray\/55 { color: rgb(var(--c-gray) / 0.91); }
+:where([data-theme="light"]) .text-gray\/60 { color: rgb(var(--c-gray) / 0.92); }
+:where([data-theme="light"]) .text-gray\/65 { color: rgb(var(--c-gray) / 0.93); }
+:where([data-theme="light"]) .text-gray\/70 { color: rgb(var(--c-gray) / 0.94); }
+:where([data-theme="light"]) .text-gray\/75 { color: rgb(var(--c-gray) / 0.95); }
+:where([data-theme="light"]) .text-gray\/80 { color: rgb(var(--c-gray) / 0.96); }
+
+:where([data-theme="light"]) .bg-white\/\[0\.015\] { background-color: rgb(20 60 40 / 0.025); }
+:where([data-theme="light"]) .bg-white\/\[0\.02\] { background-color: rgb(20 60 40 / 0.034); }
+:where([data-theme="light"]) .bg-white\/\[0\.025\] { background-color: rgb(20 60 40 / 0.043); }
+:where([data-theme="light"]) .bg-white\/\[0\.03\] { background-color: rgb(20 60 40 / 0.051); }
+:where([data-theme="light"]) .bg-white\/\[0\.04\] { background-color: rgb(20 60 40 / 0.068); }
+:where([data-theme="light"]) .bg-white\/\[0\.05\] { background-color: rgb(20 60 40 / 0.085); }
+:where([data-theme="light"]) .bg-white\/5 { background-color: rgb(20 60 40 / 0.085); }
+:where([data-theme="light"]) .bg-white\/8 { background-color: rgb(20 60 40 / 0.136); }
+
+:where([data-theme="light"]) .text-black { color: #14110C; }
+:where([data-theme="light"]) .text-black\/60 { color: rgb(20 17 12 / 0.75); }
+:where([data-theme="light"]) .text-black\/65 { color: rgb(20 17 12 / 0.78); }
+:where([data-theme="light"]) .text-black\/70 { color: rgb(20 17 12 / 0.82); }
+[data-theme="light"] .bg-gold.text-black { color: #14110C; }
+[data-theme="light"] .gold-text,
+[data-theme="light"] .gold-shimmer { background-image: linear-gradient(135deg, #8C4218, #C8703A, #8C4218); }
+[data-theme="light"] .divider-gold { background: linear-gradient(90deg, transparent, #C8703A, transparent); }
+
+/* Smooth theme switching */
+html, body, nav, section, footer, .glass-card { transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease; }
+@media (prefers-reduced-motion: reduce) { html, body, nav, section, footer, .glass-card { transition: none; } }

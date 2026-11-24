@@ -1,0 +1,72 @@
+export const membershipPlans = [
+  {
+    id: 1,
+    name: 'Silver',
+    price: '1500',
+    period: 'month',
+    description: 'Perfect for casual players seeking premium access',
+    features: [
+      '10 hours table time per month',
+      'Standard table priority booking',
+      'F&B discount (10%)',
+      'Access to weekly events',
+      'Locker storage',
+    ],
+    excluded: [
+      'VIP room access',
+      'Private coaching sessions',
+      'Tournament priority entry',
+    ],
+    highlighted: false,
+    badge: null,
+  },
+  {
+    id: 2,
+    name: 'Gold',
+    price: '3500',
+    period: 'month',
+    description: 'The definitive experience for serious enthusiasts',
+    features: [
+      '30 hours table time per month',
+      'Priority booking all tables',
+      'F&B discount (20%)',
+      'Tournament priority entry',
+      '2 coaching sessions per month',
+      'VIP lounge access',
+      'Guest privileges (2/month)',
+    ],
+    excluded: [],
+    highlighted: true,
+    badge: 'Most Popular',
+  },
+  {
+    id: 3,
+    name: 'Platinum',
+    price: '6000',
+    period: 'month',
+    description: 'Unlimited luxury for the true connoisseur',
+    features: [
+      'Unlimited table time',
+      'Dedicated table reservation',
+      'F&B discount (30%)',
+      'Unlimited tournament entry',
+      '4 coaching sessions per month',
+      'VIP room access (2 hrs/month)',
+      'Guest privileges (4/month)',
+      'Annual gala dinner invitation',
+    ],
+    excluded: [],
+    highlighted: false,
+    badge: 'Premium',
+  },
+]
+
+export const tablePricing = [
+  { type: 'Standard Pool Table', peak: '₹250/hr', offPeak: '₹180/hr', weekend: '₹300/hr' },
+  { type: 'American Pool Table', peak: '₹300/hr', offPeak: '₹220/hr', weekend: '₹350/hr' },
+  { type: 'Snooker Table (10ft)', peak: '₹350/hr', offPeak: '₹250/hr', weekend: '₹400/hr' },
+  { type: 'Snooker Table (12ft)', peak: '₹450/hr', offPeak: '₹350/hr', weekend: '₹500/hr' },
+  { type: 'VIP Suite (1 table)', peak: '₹1000/hr', offPeak: '₹800/hr', weekend: '₹1200/hr' },
+  { type: 'Grand Suite (2 tables)', peak: '₹1800/hr', offPeak: '₹1500/hr', weekend: '₹2200/hr' },
+]
+
